@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { StocksService } from './stocks.service';
 
 @Controller('stocks')
-export class StocksController {}
+export class StocksController {
+  constructor(private readonly stocksService: StocksService) {}
+
+  @Get()
+  getAllStocks() {
+    return this.stocksService.getStocks();
+  }
+}
